@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head.ejs') %>
+</head>
+
+<body>
+    <%- include('./partials/navbar.ejs') %>
+
+    <div class="container mt-5">
+        <% if (have) { %>
+            <h1><%= data.title %></h1>
+            
+            <p><%= data.description %></p>
+        <% } else { %>
+            <h1>There is no value in <%= id %> id</h1>
+        <% } %>
+    </div>
+</body>
+</html>

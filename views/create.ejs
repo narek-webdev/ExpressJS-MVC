@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head.ejs') %>
+</head>
+
+<body>
+    <%- include('./partials/navbar.ejs') %>
+
+    <div class="container mt-5">
+        <h1>Create</h1>
+
+        <div class="alert alert-success" role="alert" id="success-alert">
+            <i class="bi bi-check-circle"></i> Item updated successfuly
+        </div>
+        
+        <div class="mb-3 mt-3">
+            <label for="title" class="form-label">Title</label>
+            <input class="form-control" id="title" placeholder="e.g: Item 1" />
+        </div>
+
+        <div class="mb-3 mt-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" rows="6" id="description"></textarea>
+        </div>
+
+        <div>
+            <button type="button" class="btn btn-primary" onclick="storeItem()">
+                <i class="bi bi-plus-circle"></i> Create
+            </button>
+        </div>
+    </div>
+
+    <script src="../public/js/items.js"></script>
+</body>
+</html>

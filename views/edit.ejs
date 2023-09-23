@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head.ejs') %>
+
+    <link rel="stylesheet" href="../public/css/items.css">
+</head>
+
+<body>
+    <%- include('./partials/navbar.ejs') %>
+
+    <div class="container mt-5">
+        <% if (have) { %>
+            <h1>Edit</h1>
+
+            <div class="alert alert-success" role="alert" id="success-alert">
+                <i class="bi bi-check-circle"></i> Item updated successfuly
+            </div>
+    
+            <div class="alert alert-danger" role="alert" id="danger-alert">
+                <i class="bi bi-x-circle"></i> Some error occurred
+            </div>
+            
+            <div class="mb-3 mt-3">
+                <label for="title" class="form-label">Title</label>
+                <input class="form-control" id="title" placeholder="Item 1" value="<%= data.title %>" />
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea id="description" class="form-control" rows="7"><%= data.description %></textarea>
+            </div>
+    
+            <div>
+                <button type="button" class="btn btn-primary" onclick="updateItem('<%= data.id %>')">
+                    <i class="bi bi-pencil-square"></i> Update
+                </button>
+            </div>
+        <% } else { %>
+            <h1>Wrong id!</h1>
+        <% } %>
+    </div>
+
+    <script src="../public/js/items.js"></script>
+</body>
+</html>
