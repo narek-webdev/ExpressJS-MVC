@@ -1,10 +1,10 @@
 const login = () => {
-    const name = document.getElementById('name').value.trim()
-    const email = document.getElementById('email').value.trim()
-    const password = document.getElementById('password').value.trim()
-    const confirm = document.getElementById('confirm').value.trim()
+    const name = document.getElementById('name').value
+    const email = document.getElementById('email').value
+    const password = document.getElementById('password').value
+    const confirm = document.getElementById('confirm').value
 
-    fetch(`${process.env.REQUEST_URI}/register`, {
+    fetch(`http://localhost:2001/register`, {
         method: 'POST',
         body: JSON.stringify({ name, email, password, confirm }),
         headers: {

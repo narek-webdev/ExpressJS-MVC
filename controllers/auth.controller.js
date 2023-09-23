@@ -1,13 +1,33 @@
+const { validationResult, matchedData } = require('express-validator')
 class AuthController {
-    register(_, res) {
+    register = (_, res) => {
         res.render('./auth/register')
     }
 
-    registerAuth(req, res) {
-        console.log(req.body)
+    registerAuth = async (req, res) => {
+        const validation = validationResult(req)
+
+        if (validation.isEmpty()) {
+            const data = matchedData(req)
+
+            console.log(data)
+            return
+        }
+
+        res.status(500).send({
+            type: 'error',
+            value: validation
+                .formatWith((error) => {
+                    return {
+                        message: error.msg,
+                        field: error.path,
+                    }
+                })
+                .array({ onlyFirstError: true }),
+        })
     }
 
-    login(_, res) {
+    login = (_, res) => {
         res.render('./auth/login')
     }
 }
