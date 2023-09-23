@@ -18,6 +18,8 @@ app.use(
 
 require('./routes/auth.route')(app)
 
-app.listen(port, () => {
-    console.log('running')
+app.get('*', (_, res) => {
+    res.status(404).render('404')
 })
+
+app.listen(port, () => {})

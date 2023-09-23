@@ -13,13 +13,15 @@ const login = () => {
     })
         .then((res) => res.json())
         .then((res) => {
-            console.log(res)
+            // if (res.type === 'error') {
+            //     for (const error of res.error) {
+            //         console.log(error)
+            //     }
+            // }
             // if (res.storeStatus) {
             //     document.getElementById('title').value = ''
             //     document.getElementById('description').value = ''
-
             //     document.getElementById('success-alert').style.display = 'block'
-
             //     setTimeout(() => {
             //         document.getElementById('success-alert').style.display =
             //             'none'
