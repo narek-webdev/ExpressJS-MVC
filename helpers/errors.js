@@ -1,5 +1,5 @@
 module.exports = {
-    SIGN_UP: {
+    AUTH: {
         email_reqired: 'Email field is required!',
         email_valid: 'Provide valid email',
         name_reqired: 'Name field is required!',

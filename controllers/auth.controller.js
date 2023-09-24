@@ -22,6 +22,51 @@ class AuthController {
                 res.send({
                     type: 'success',
                 })
+                return
+            }
+
+            res.send({
+                type: 'error',
+                error: validation
+                    .formatWith((error) => {
+                        return {
+                            message: error.msg,
+                            field: error.path,
+                        }
+                    })
+                    .array({ onlyFirstError: true }),
+            })
+        } catch (err) {
+            res.send({
+                type: 'error',
+                error: {
+                    message: err.sqlMessage,
+                },
+            })
+        }
+    }
+
+    loginAuth = async (req, res) => {
+        try {
+            const validation = validationResult(req)
+
+            if (validation.isEmpty()) {
+                const data = matchedData(req)
+
+                const result = await Auth.login(data.email, data.password)
+
+                if (result.statusCode === 'success') {
+                    req.session.userId = result.userId
+
+                    res.send({
+                        type: 'success',
+                    })
+                } else {
+                    res.send({
+                        type: 'Wrong email or password',
+                    })
+                }
+                return
             }
 
             res.send({

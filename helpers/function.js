@@ -8,4 +8,11 @@ module.exports = {
             console.log(error)
         }
     },
+    hashCompare: async (password, bdPassword) => {
+        try {
+            return await bcrypt.compare(password, bdPassword)
+        } catch (error) {
+            console.log(error)
+        }
+    },
 }

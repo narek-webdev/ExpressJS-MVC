@@ -1,4 +1,4 @@
-const login = () => {
+const register = () => {
     const name = document.getElementById('name').value
     const email = document.getElementById('email').value
     const password = document.getElementById('password').value
@@ -27,6 +27,28 @@ const login = () => {
             //             'none'
             //     }, 2000)
             // }
+        })
+        .catch((err) => console.log(err))
+}
+
+const login = () => {
+    const email = document.getElementById('email').value
+    const password = document.getElementById('password').value
+
+    fetch(`http://localhost:2001/login`, {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then((res) => res.json())
+        .then((res) => {
+            if (res.type === 'success') {
+                return (window.location.href = '/dashboard')
+            }
+
+            console.log(res)
         })
         .catch((err) => console.log(err))
 }

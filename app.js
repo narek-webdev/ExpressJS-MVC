@@ -12,14 +12,14 @@ app.use(
         secret: process.env.EXPRESS_SESSION,
         resave: false,
         saveUninitialized: true,
-        cookie: { secure: true },
     })
 )
 
 require('./routes/auth.route')(app)
+require('./routes/dashboard.route')(app)
 
 app.get('*', (_, res) => {
-    res.status(404).render('404')
+    res.redirect('/login')
 })
 
 app.listen(port, () => {})

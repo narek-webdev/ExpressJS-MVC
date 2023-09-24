@@ -1,5 +1,5 @@
 const AuthController = require('../controllers/auth.controller')
-const { signupValidation } = require('../helpers/validations')
+const { signupValidation, loginValidation } = require('../helpers/validations')
 
 module.exports = (app) => {
     app.get('/register', AuthController.register).post(
@@ -8,5 +8,9 @@ module.exports = (app) => {
         AuthController.registerAuth
     )
 
-    app.get('/login', AuthController.login)
+    app.get('/login', AuthController.login).post(
+        '/login',
+        loginValidation(),
+        AuthController.loginAuth
+    )
 }
